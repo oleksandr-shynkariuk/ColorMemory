@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="245a22aa-906a-4e5b-a5eb-3642cfe00e96" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/css/game.css" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/colorMemory.js" afterPath="$PROJECT_DIR$/js/colorMemory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/index.html" afterPath="$PROJECT_DIR$/index.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Accedo.ColorMemory.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/index.html" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377856761493" ignored="false" />
-    <file path="/colorMemory.js" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377858387730" ignored="false" />
+    <file path="/colorMemory.js" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377858948403" ignored="false" />
     <file path="/Dummy.txt" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377853194619" ignored="false" />
     <file path="/game.css" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377858222513" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -44,7 +42,7 @@
       <file leaf-file-name="colorMemory.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/colorMemory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="43" column="45" selection-start="1328" selection-end="1328" vertical-scroll-proportion="0.69072163">
+            <state line="39" column="25" selection-start="1146" selection-end="1146" vertical-scroll-proportion="0.53608245">
               <folding />
             </state>
           </provider>
@@ -365,7 +363,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/colorMemory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="43" column="45" selection-start="1328" selection-end="1328" vertical-scroll-proportion="0.69072163">
+        <state line="39" column="25" selection-start="1146" selection-end="1146" vertical-scroll-proportion="0.53608245">
           <folding />
         </state>
       </provider>

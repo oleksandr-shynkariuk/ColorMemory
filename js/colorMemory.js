@@ -18,7 +18,7 @@ game.initStartBoard = function(){
         }
         gameTable += '</tr>';
     }
-    gameTable += "</table>"
+    gameTable += "</table>";
     $(this.board.instance).append(gameTable);
 };
 
@@ -37,13 +37,14 @@ game.drawGameBoard = function(){
 
 game.prepareGameBoard = function(){
     //make 10 px space
+    borderSpacing = 2 * 2;
     this.board.top = 10;
     this.board.left = 10;
     min = Math.min($(window).width() / 2, $(window).height() / 2);
     this.board.width = min + this.board.top;
     this.board.height = min + this.board.left;
-    this.section.width = Math.floor(this.board.width / 4);
-    this.section.height = Math.floor(this.board.width / 4);
+    this.section.width = Math.floor(this.board.width / 4) - borderSpacing;
+    this.section.height = Math.floor(this.board.width / 4) - borderSpacing;
     this.drawGameBoard();
 };
 
