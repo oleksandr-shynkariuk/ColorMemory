@@ -1,4 +1,6 @@
-.highlight {background-color:#ff0000 !important;}
+.highlight {
+    border: 2px double orange;
+}
 .face-down {
     background-image: url('../dist/card_bg.gif');
     background-repeat: no-repeat;

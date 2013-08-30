@@ -2,10 +2,15 @@ var game = {};//whole game instance
 game.board = {};//game board
 game.colorsNumber = 4;
 game.parentPane = 'body';//parent pane element
+game.board.currentRow = {};
+game.board.currentRowId = 'td00';
 game.board.style = {
     'background':'#fff',
     'opacity':1,
     'border':'1px solid #ddd'
+};
+game.board.highlight = {
+    'border-color': 'orange'
 };
 game.section = {};
 
@@ -14,12 +19,19 @@ game.initStartBoard = function(){
     for(i = 0; i < this.colorsNumber; ++i){
         gameTable += '<tr>';
         for(j = 0; j < this.colorsNumber; ++j){
-            gameTable += "<td class='face-down' width=" + this.section.width + " height=" + this.section.height + ">" + '</td>';
+            gameTable += "<td id=" + "td" + i + j + " class='face-down' width=" + this.section.width + " height=" + this.section.height + ">" + '</td>';
         }
         gameTable += '</tr>';
     }
     gameTable += "</table>";
+
     $(this.board.instance).append(gameTable);
+
+    //init highlight
+    game.board.currentRow = document.getElementById(game.board.currentRowId);
+    if(game.board.currentRow != null){
+        game.board.currentRow.className = game.board.currentRow.className + " highlight";
+    }
 };
 
 game.drawGameBoard = function(){
