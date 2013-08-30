@@ -14,7 +14,7 @@ game.initStartBoard = function(){
     for(i = 0; i < this.colorsNumber; ++i){
         gameTable += '<tr>';
         for(j = 0; j < this.colorsNumber; ++j){
-            gameTable += '<td>' + 'result ' +  i + ' ' + j + '</td>';
+            gameTable += "<td class='face-down' width=" + this.section.width + " height=" + this.section.height + ">" + '</td>';
         }
         gameTable += '</tr>';
     }
@@ -36,13 +36,14 @@ game.drawGameBoard = function(){
 };
 
 game.prepareGameBoard = function(){
-    this.board.width = Math.min($(window).width() / 2, $(window).height() / 2);
-    this.board.height = this.board.width;
     //make 10 px space
     this.board.top = 10;
     this.board.left = 10;
-    this.section.width = this.board.width / 4;
-    this.section.height = this.board.width / 4;
+    min = Math.min($(window).width() / 2, $(window).height() / 2);
+    this.board.width = min + this.board.top;
+    this.board.height = min + this.board.left;
+    this.section.width = Math.floor(this.board.width / 4);
+    this.section.height = Math.floor(this.board.width / 4);
     this.drawGameBoard();
 };
 

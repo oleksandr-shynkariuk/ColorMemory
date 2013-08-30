@@ -1,0 +1,9 @@
+.highlight {background-color:#ff0000 !important;}
+.face-down {
+    background-image: url('../dist/card_bg.gif');
+    background-repeat: no-repeat;
+    background-position: center;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
