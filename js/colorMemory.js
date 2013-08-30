@@ -1,5 +1,6 @@
 var game = {};//whole game instance
 game.board = {};//game board
+game.colorsNumber = 4;
 game.parentPane = 'body';//parent pane element
 game.board.style = {
     'background':'#fff',
@@ -9,7 +10,16 @@ game.board.style = {
 game.section = {};
 
 game.initStartBoard = function(){
-
+    var gameTable = "<table>"
+    for(i = 0; i < this.colorsNumber; ++i){
+        gameTable += '<tr>';
+        for(j = 0; j < this.colorsNumber; ++j){
+            gameTable += '<td>' + 'result ' +  i + ' ' + j + '</td>';
+        }
+        gameTable += '</tr>';
+    }
+    gameTable += "</table>"
+    $(this.board.instance).append(gameTable);
 };
 
 game.drawGameBoard = function(){
