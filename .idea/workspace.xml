@@ -3,13 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="245a22aa-906a-4e5b-a5eb-3642cfe00e96" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/colorMemory.js" afterPath="$PROJECT_DIR$/js/colorMemory.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/game.css" afterPath="$PROJECT_DIR$/css/game.css" />
     </list>
     <ignored path="Accedo.ColorMemory.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/index.html" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377856761493" ignored="false" />
-    <file path="/colorMemory.js" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377952743063" ignored="false" />
+    <file path="/colorMemory.js" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377954351229" ignored="false" />
     <file path="/Dummy.txt" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377948745189" ignored="false" />
-    <file path="/game.css" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377860856143" ignored="false" />
+    <file path="/game.css" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377954808804" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,19 +39,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="colorMemory.js" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="colorMemory.js" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/js/colorMemory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="47" column="31" selection-start="1279" selection-end="1279" vertical-scroll-proportion="0.94">
+            <state line="20" column="16" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.css" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="game.css" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/css/game.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="1" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
+            <state line="10" column="29" selection-start="287" selection-end="287" vertical-scroll-proportion="0.19329897">
               <folding />
             </state>
           </provider>
@@ -84,8 +85,8 @@
         <option value="$PROJECT_DIR$/html/index.html" />
         <option value="$PROJECT_DIR$/html/new.html" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/css/game.css" />
         <option value="$PROJECT_DIR$/js/colorMemory.js" />
+        <option value="$PROJECT_DIR$/css/game.css" />
       </list>
     </option>
   </component>
@@ -363,9 +364,16 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/css/game.css">
+    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="1" selection-start="248" selection-end="248" vertical-scroll-proportion="0.0">
+        <state line="1750" column="0" selection-start="28556" selection-end="28556" vertical-scroll-proportion="0.33247423">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/colorMemory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="20" column="16" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0">
           <folding />
         </state>
       </provider>
@@ -377,16 +385,9 @@
         </state>
       </provider>
     </entry>
-    <entry file="jar://$APPLICATION_HOME_DIR$/plugins/JavaScriptLanguage/lib/JavascriptLanguage.jar!/com/intellij/lang/javascript/index/predefined/DHTML.js">
+    <entry file="file://$PROJECT_DIR$/css/game.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="1750" column="0" selection-start="28556" selection-end="28556" vertical-scroll-proportion="0.33247423">
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/js/colorMemory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="47" column="31" selection-start="1279" selection-end="1279" vertical-scroll-proportion="0.94">
+        <state line="10" column="29" selection-start="287" selection-end="287" vertical-scroll-proportion="0.19329897">
           <folding />
         </state>
       </provider>

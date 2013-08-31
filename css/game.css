@@ -1,5 +1,5 @@
 .highlight {
-    border: 2px double orange;
+    border: 2px double orange !important;
 }
 .face-down {
     background-image: url('../dist/card_bg.gif');
@@ -8,4 +8,5 @@
     margin-left: auto;
     margin-right: auto;
     text-align: center;
+    border: 2px double white;
 }

@@ -18,16 +18,33 @@ game.board.currentCellId = 'td' + game.board.currentRow + game.board.currentColu
 game.board.style = {
     'background':'#fff',
     'opacity':1,
-    'border':'1px solid #ddd'
+    'border':'20px solid #ddd'
 };
 game.board.highlight = {
     'border-color': 'orange'
 };
 game.section = {};
 
+game.board.updateCurrentCellId = function(){
+    game.board.currentCellId = 'td' + game.board.currentRow + game.board.currentColumn;
+}
+
 game.moveDown = function(){
+    prevRow = game.board.currentRow;
+    prevCellId = game.board.currentCellId;
     game.board.currentRow = (1 + game.board.currentRow) % (game.board.size);
+    game.board.updateCurrentCellId();
+    game.board.currentCell = document.getElementById(game.board.currentCellId);
+    if(game.board.currentCell != null){
+        game.board.currentCell.className = game.board.currentCell.className + " highlight";
+    }
+    prevCell = document.getElementById(prevCellId);
+    if(prevCell != null){
+        prevCell.className = "face-down";
+    }
     //TODO: relocate highlight to the next row
+    //TODO: prohibit moving to already opened cards
+
 };
 game.moveUp = function(){
     if(game.board.currentRow == 0)
