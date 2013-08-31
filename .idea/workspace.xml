@@ -3,12 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="245a22aa-906a-4e5b-a5eb-3642cfe00e96" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/colorMemory.js" afterPath="$PROJECT_DIR$/js/colorMemory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/game.css" afterPath="$PROJECT_DIR$/css/game.css" />
     </list>
     <ignored path="Accedo.ColorMemory.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/index.html" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377856761493" ignored="false" />
-    <file path="/colorMemory.js" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377954351229" ignored="false" />
+    <file path="/colorMemory.js" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377955682841" ignored="false" />
     <file path="/Dummy.txt" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377948745189" ignored="false" />
     <file path="/game.css" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377954808804" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -39,19 +38,19 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="colorMemory.js" pinned="false" current="false" current-in-tab="false">
+      <file leaf-file-name="colorMemory.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/colorMemory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="20" column="16" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0">
+            <state line="73" column="41" selection-start="2240" selection-end="2240" vertical-scroll-proportion="0.71005154">
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="game.css" pinned="false" current="true" current-in-tab="true">
+      <file leaf-file-name="game.css" pinned="false" current="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/css/game.css">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="10" column="29" selection-start="287" selection-end="287" vertical-scroll-proportion="0.19329897">
+            <state line="10" column="29" selection-start="287" selection-end="287" vertical-scroll-proportion="0.0">
               <folding />
             </state>
           </provider>
@@ -85,8 +84,8 @@
         <option value="$PROJECT_DIR$/html/index.html" />
         <option value="$PROJECT_DIR$/html/new.html" />
         <option value="$PROJECT_DIR$/index.html" />
-        <option value="$PROJECT_DIR$/js/colorMemory.js" />
         <option value="$PROJECT_DIR$/css/game.css" />
+        <option value="$PROJECT_DIR$/js/colorMemory.js" />
       </list>
     </option>
   </component>
@@ -371,13 +370,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/js/colorMemory.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state line="20" column="16" selection-start="527" selection-end="527" vertical-scroll-proportion="0.0">
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
         <state line="6" column="9" selection-start="131" selection-end="131" vertical-scroll-proportion="-3.75">
@@ -387,7 +379,14 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/css/game.css">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="10" column="29" selection-start="287" selection-end="287" vertical-scroll-proportion="0.19329897">
+        <state line="10" column="29" selection-start="287" selection-end="287" vertical-scroll-proportion="0.0">
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/js/colorMemory.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state line="73" column="41" selection-start="2240" selection-end="2240" vertical-scroll-proportion="0.71005154">
           <folding />
         </state>
       </provider>

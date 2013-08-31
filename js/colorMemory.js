@@ -26,13 +26,10 @@ game.board.highlight = {
 game.section = {};
 
 game.board.updateCurrentCellId = function(){
-    game.board.currentCellId = 'td' + game.board.currentRow + game.board.currentColumn;
-}
+    game.board.currentCellId = 'td' + game.board.currentRow + '' + game.board.currentColumn;
+};
 
-game.moveDown = function(){
-    prevRow = game.board.currentRow;
-    prevCellId = game.board.currentCellId;
-    game.board.currentRow = (1 + game.board.currentRow) % (game.board.size);
+game.board.updateHighlight = function(prevCellId){
     game.board.updateCurrentCellId();
     game.board.currentCell = document.getElementById(game.board.currentCellId);
     if(game.board.currentCell != null){
@@ -41,25 +38,40 @@ game.moveDown = function(){
     prevCell = document.getElementById(prevCellId);
     if(prevCell != null){
         prevCell.className = "face-down";
+    } else{
+        alert("Null " + prevCellId)
     }
-    //TODO: relocate highlight to the next row
+};
+
+game.moveDown = function(){
+    prevCellId = game.board.currentCellId;
+    game.board.currentRow = (1 + game.board.currentRow) % (game.board.size);
+    game.board.updateHighlight(prevCellId);
+    //TODO: move highlight to the next row
     //TODO: prohibit moving to already opened cards
 
 };
 game.moveUp = function(){
+    prevCellId = game.board.currentCellId;
     if(game.board.currentRow == 0)
         game.board.currentRow = game.board.size - 1;
     else
         --game.board.currentRow;
+    game.board.updateHighlight(prevCellId);
+
 };
 game.moveLeft = function(){
+    prevCellId = game.board.currentCellId;
     if(game.board.currentColumn == 0)
         game.board.currentColumn = game.board.size - 1;
     else
         --game.board.currentColumn;
+    game.board.updateHighlight(prevCellId);
 };
 game.moveRight = function(){
+    prevCellId = game.board.currentCellId;
     game.board.currentColumn = (1 + game.board.currentColumn) % (game.board.size);
+    game.board.updateHighlight(prevCellId);
 };
 game.openCard = function(){
     //TODO: open current column
