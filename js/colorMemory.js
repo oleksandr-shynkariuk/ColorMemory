@@ -1,3 +1,10 @@
+var KEY = {
+    'ENTER': 13,
+    'LEFT':37,
+    'RIGHT':39,
+    'UP':38,
+    'DOWN':40
+};
 var game = {};//whole game instance
 game.board = {};//game board
 game.colorsNumber = 4;
@@ -13,6 +20,10 @@ game.board.highlight = {
     'border-color': 'orange'
 };
 game.section = {};
+
+game.keyPress = function(e){
+
+}
 
 game.initStartBoard = function(){
     var gameTable = "<table>"
@@ -63,6 +74,7 @@ game.prepareGameBoard = function(){
 game.init = function(){
     this.prepareGameBoard();
     this.initStartBoard();
+    $(document).onkeydown(this.keyPress);
     //TODO more stuff here
 };
 
