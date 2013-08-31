@@ -7,10 +7,14 @@ var KEY = {
 };
 var game = {};//whole game instance
 game.board = {};//game board
-game.colorsNumber = 4;
+game.colorsNumber = 8;
+
 game.parentPane = 'body';//parent pane element
-game.board.currentRow = {};
-game.board.currentRowId = 'td00';
+game.board.size = Math.sqrt(game.colorsNumber * 2);
+game.board.currentCell = {};
+game.board.currentRow = 0;
+game.board.currentColumn = 0;
+game.board.currentCellId = 'td' + game.board.currentRow + game.board.currentColumn;
 game.board.style = {
     'background':'#fff',
     'opacity':1,
@@ -21,15 +25,55 @@ game.board.highlight = {
 };
 game.section = {};
 
-game.keyPress = function(e){
+game.moveDown = function(){
+    game.board.currentRow = (1 + game.board.currentRow) % (game.board.size);
+    //TODO: relocate highlight to the next row
+};
+game.moveUp = function(){
+    if(game.board.currentRow == 0)
+        game.board.currentRow = game.board.size - 1;
+    else
+        --game.board.currentRow;
+};
+game.moveLeft = function(){
+    if(game.board.currentColumn == 0)
+        game.board.currentColumn = game.board.size - 1;
+    else
+        --game.board.currentColumn;
+};
+game.moveRight = function(){
+    game.board.currentColumn = (1 + game.board.currentColumn) % (game.board.size);
+};
+game.openCard = function(){
+    //TODO: open current column
+};
 
+game.keyPress = function(e){
+    switch(e.which){
+        case KEY.DOWN:
+            game.moveDown();
+            break;
+        case KEY.UP:
+            game.moveUp();
+            break;
+        case KEY.LEFT:
+            game.moveLeft();
+            break;
+        case KEY.RIGHT:
+            game.moveRight();
+            break;
+        case KEY.ENTER:
+            game.openCard();
+            break;
+        default: break;
+    }
 }
 
 game.initStartBoard = function(){
     var gameTable = "<table>"
-    for(i = 0; i < this.colorsNumber; ++i){
+    for(i = 0; i < this.board.size; ++i){
         gameTable += '<tr>';
-        for(j = 0; j < this.colorsNumber; ++j){
+        for(j = 0; j < this.board.size; ++j){
             gameTable += "<td id=" + "td" + i + j + " class='face-down' width=" + this.section.width + " height=" + this.section.height + ">" + '</td>';
         }
         gameTable += '</tr>';
@@ -39,9 +83,9 @@ game.initStartBoard = function(){
     $(this.board.instance).append(gameTable);
 
     //init highlight
-    game.board.currentRow = document.getElementById(game.board.currentRowId);
-    if(game.board.currentRow != null){
-        game.board.currentRow.className = game.board.currentRow.className + " highlight";
+    game.board.currentCell = document.getElementById(game.board.currentCellId);
+    if(game.board.currentCell != null){
+        game.board.currentCell.className = game.board.currentCell.className + " highlight";
     }
 };
 
@@ -74,7 +118,7 @@ game.prepareGameBoard = function(){
 game.init = function(){
     this.prepareGameBoard();
     this.initStartBoard();
-    $(document).onkeydown(this.keyPress);
+    $(document).keydown(this.keyPress);
     //TODO more stuff here
 };
 
