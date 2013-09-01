@@ -5,9 +5,17 @@ var KEY = {
     'UP':38,
     'DOWN':40
 };
+//function to shuffle arrays
+function shuffle(array){ //v1.0
+    for(var j, x, i = array.length; i; j = Math.floor(Math.random() * i), x = array[--i], array[i] = array[j], array[j] = x);
+    return array;
+};
 var game = {};//whole game instance
 game.board = {};//game board
-game.colorsNumber = 8;
+
+//TODO: fetch coors
+game.colors = ["#3be6c4", "#e6e03b", "#6f3be6", "#4fe63b", "#e63b3b", "#ff5a00", "#ff00de", "#3b8fe6"];
+game.colorsNumber = game.colors.length;
 
 game.parentPane = 'body';//parent pane element
 game.board.size = Math.sqrt(game.colorsNumber * 2);
@@ -23,8 +31,25 @@ game.board.style = {
 game.board.highlight = {
     'border-color': 'orange'
 };
+game.board.grid = new Array();
 game.section = {};
+//fill game grid randomly with given colors
+game.board.fillWithColors = function(){
+    dimension = game.board.size;
+    colors = new Array();
+    colors = game.colors.concat(game.colors);
+    colors = shuffle(colors);
+    c = 0;
+    for(i = 0; i < dimension; ++i){
+        game.board.grid[i] = new Array();
+        for(j = 0; j < dimension; ++j){
+            game.board.grid[i][j] = colors[c];
+            console.log("grid: " + i + " " + j + ": " + game.board.grid[i][j]);
+            ++c;
+        }
+    }
 
+};
 game.board.updateCurrentCellId = function(){
     game.board.currentCellId = 'td' + game.board.currentRow + '' + game.board.currentColumn;
 };
@@ -47,7 +72,7 @@ game.moveDown = function(){
     prevCellId = game.board.currentCellId;
     game.board.currentRow = (1 + game.board.currentRow) % (game.board.size);
     game.board.updateHighlight(prevCellId);
-    //TODO: move highlight to the next row
+    //TODO: Make highlight moving over already opened cells
     //TODO: prohibit moving to already opened cards
 
 };
@@ -74,7 +99,6 @@ game.moveRight = function(){
     game.board.updateHighlight(prevCellId);
 };
 game.openCard = function(){
-    //TODO: open current column
 };
 
 game.keyPress = function(e){
@@ -116,6 +140,7 @@ game.initStartBoard = function(){
     if(game.board.currentCell != null){
         game.board.currentCell.className = game.board.currentCell.className + " highlight";
     }
+    this.board.fillWithColors();
 };
 
 game.drawGameBoard = function(){
@@ -134,11 +159,11 @@ game.drawGameBoard = function(){
 game.prepareGameBoard = function(){
     //make 10 px space
     borderSpacing = 2 * 2;
-    this.board.top = 10;
+    this.board.top = 30;
     this.board.left = 10;
     min = Math.min($(window).width() / 2, $(window).height() / 2);
-    this.board.width = min + this.board.top;
-    this.board.height = min + this.board.left;
+    this.board.width = min + this.board.left;
+    this.board.height = min + this.board.top;
     this.section.width = Math.floor(this.board.width / 4) - borderSpacing;
     this.section.height = Math.floor(this.board.width / 4) - borderSpacing;
     this.drawGameBoard();
