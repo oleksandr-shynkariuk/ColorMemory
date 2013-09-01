@@ -6,11 +6,11 @@ var KEY = {
     'DOWN':40
 };
 //function to shuffle arrays
-function shuffle(array){ //v1.0
+function shuffle(array){
     for(var j, x, i = array.length; i; j = Math.floor(Math.random() * i), x = array[--i], array[i] = array[j], array[j] = x);
     return array;
 };
-var game = {};//whole game instance
+var game = {};//a game instance
 game.board = {};//game board
 
 //TODO: fetch coors
@@ -36,19 +36,18 @@ game.section = {};
 //fill game grid randomly with given colors
 game.board.fillWithColors = function(){
     dimension = game.board.size;
-    colors = new Array();
+    var colors = new Array();
     colors = game.colors.concat(game.colors);
     colors = shuffle(colors);
-    c = 0;
-    for(i = 0; i < dimension; ++i){
+    var c = 0;
+    for(var i = 0; i < dimension; ++i){
         game.board.grid[i] = new Array();
-        for(j = 0; j < dimension; ++j){
+        for(var j = 0; j < dimension; ++j){
             game.board.grid[i][j] = colors[c];
             console.log("grid: " + i + " " + j + ": " + game.board.grid[i][j]);
             ++c;
         }
     }
-
 };
 game.board.updateCurrentCellId = function(){
     game.board.currentCellId = 'td' + game.board.currentRow + '' + game.board.currentColumn;
@@ -62,7 +61,8 @@ game.board.updateHighlight = function(prevCellId){
     }
     prevCell = document.getElementById(prevCellId);
     if(prevCell != null){
-        prevCell.className = "face-down";
+        $(prevCell).removeClass("highlight");
+        //prevCell.className = "face-down";
     } else{
         alert("Null " + prevCellId)
     }
@@ -74,7 +74,6 @@ game.moveDown = function(){
     game.board.updateHighlight(prevCellId);
     //TODO: Make highlight moving over already opened cells
     //TODO: prohibit moving to already opened cards
-
 };
 game.moveUp = function(){
     prevCellId = game.board.currentCellId;
@@ -99,6 +98,12 @@ game.moveRight = function(){
     game.board.updateHighlight(prevCellId);
 };
 game.openCard = function(){
+    var color = game.board.grid[game.board.currentRow][game.board.currentColumn];
+    game.board.currentCell = document.getElementById(game.board.currentCellId);
+    if(game.board.currentCell != null){
+        game.board.currentCell.className = "highlight";//leave highlight and change background color
+        game.board.currentCell.bgColor = color;
+    }
 };
 
 game.keyPress = function(e){
