@@ -3,13 +3,11 @@
   <component name="ChangeListManager">
     <list default="true" id="245a22aa-906a-4e5b-a5eb-3642cfe00e96" name="Default" comment="">
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/js/colorMemory.js" afterPath="$PROJECT_DIR$/js/colorMemory.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/css/game.css" afterPath="$PROJECT_DIR$/css/game.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
     </list>
     <ignored path="Accedo.ColorMemory.iws" />
     <ignored path=".idea/workspace.xml" />
     <file path="/index.html" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1377856761493" ignored="false" />
-    <file path="/colorMemory.js" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1378147485085" ignored="false" />
+    <file path="/colorMemory.js" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1378148310839" ignored="false" />
     <file path="/Dummy.txt" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1378133191771" ignored="false" />
     <file path="/game.css" changelist="245a22aa-906a-4e5b-a5eb-3642cfe00e96" time="1378146658675" ignored="false" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -43,7 +41,7 @@
       <file leaf-file-name="colorMemory.js" pinned="false" current="true" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/js/colorMemory.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state line="127" column="60" selection-start="4536" selection-end="4536" vertical-scroll-proportion="0.5018821">
+            <state line="115" column="57" selection-start="3871" selection-end="3871" vertical-scroll-proportion="0.49184442">
               <folding />
             </state>
           </provider>
@@ -410,7 +408,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/js/colorMemory.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state line="127" column="60" selection-start="4536" selection-end="4536" vertical-scroll-proportion="0.5018821">
+        <state line="115" column="57" selection-start="3871" selection-end="3871" vertical-scroll-proportion="0.49184442">
           <folding />
         </state>
       </provider>

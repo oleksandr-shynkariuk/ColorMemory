@@ -26,6 +26,7 @@ game.colorsNumber = game.colors.length;
 game.parentPane = 'body';//parent pane element
 game.board.size = Math.sqrt(game.colorsNumber * 2);
 game.board.currentCell = {};
+game.board.busy = false;//flag to forbid opening >2 cards
 game.board.currentRow = 0;
 game.board.currentColumn = 0;
 game.board.currentCellId = 'td' + game.board.currentRow + game.board.currentColumn;
@@ -112,7 +113,7 @@ game.moveRight = function(){
 game.openCard = function(){
     var color = game.board.grid[game.board.currentRow][game.board.currentColumn];
     game.board.currentCell = document.getElementById(game.board.currentCellId);
-    if(game.board.currentCell != null){
+    if(game.board.currentCell != null && !game.board.busy){
         game.board.currentCell.className = "highlight";//leave highlight and change background color
         game.board.currentCell.bgColor = color;
         if(game.firstColor == ""){//save first color
@@ -123,9 +124,11 @@ game.openCard = function(){
             if(game.firstColor != color){
                 var currentRow = game.board.currentRow;
                 var currentColumn = game.board.currentColumn;
+                game.board.busy = true;
                 setTimeout(function(){
                     game.board.turnCardFaceDown(game.firstSelectionRow, game.firstSelectionColumn);
                     game.board.turnCardFaceDown(currentRow, currentColumn);
+                    game.board.busy = false;
                 }, 2000);
             }
             game.firstColor = "";
