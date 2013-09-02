@@ -13,6 +13,12 @@ function shuffle(array){
 var game = {};//a game instance
 game.board = {};//game board
 
+game.firstSelectionRow = -1;
+game.firstSelectionColumn = -1;
+game.secondSelectionRow = -1;
+game.secondSelectionColumn = -1;
+game.firstColor = "";
+game.secondColor = "";
 //TODO: fetch coors
 game.colors = ["#3be6c4", "#e6e03b", "#6f3be6", "#4fe63b", "#e63b3b", "#ff5a00", "#ff00de", "#3b8fe6"];
 game.colorsNumber = game.colors.length;
@@ -53,6 +59,13 @@ game.board.updateCurrentCellId = function(){
     game.board.currentCellId = 'td' + game.board.currentRow + '' + game.board.currentColumn;
 };
 
+game.board.turnCardFaceDown = function(row, column){
+    var cellId = "td" + "" + row + "" + column;
+    var cell = document.getElementById(cellId);
+    cell.bgColor = "white";
+    $(cell).addClass("face-down");
+};
+
 game.board.updateHighlight = function(prevCellId){
     game.board.updateCurrentCellId();
     game.board.currentCell = document.getElementById(game.board.currentCellId);
@@ -62,9 +75,8 @@ game.board.updateHighlight = function(prevCellId){
     prevCell = document.getElementById(prevCellId);
     if(prevCell != null){
         $(prevCell).removeClass("highlight");
-        //prevCell.className = "face-down";
     } else{
-        alert("Null " + prevCellId)
+        alert("Null " + prevCellId);//TODO: remove it!
     }
 };
 
@@ -103,6 +115,21 @@ game.openCard = function(){
     if(game.board.currentCell != null){
         game.board.currentCell.className = "highlight";//leave highlight and change background color
         game.board.currentCell.bgColor = color;
+        if(game.firstColor == ""){//save first color
+            game.firstColor = color;
+            game.firstSelectionRow = game.board.currentRow;
+            game.firstSelectionColumn = game.board.currentColumn;
+        } else{
+            if(game.firstColor != color){
+                var currentRow = game.board.currentRow;
+                var currentColumn = game.board.currentColumn;
+                setTimeout(function(){
+                    game.board.turnCardFaceDown(game.firstSelectionRow, game.firstSelectionColumn);
+                    game.board.turnCardFaceDown(currentRow, currentColumn);
+                }, 2000);
+            }
+            game.firstColor = "";
+        }
     }
 };
 

@@ -3,6 +3,7 @@
 }
 .face-down {
     background-image: url('../dist/card_bg.gif');
+    background-color: white;
     background-repeat: no-repeat;
     background-position: center;
     margin-left: auto;
