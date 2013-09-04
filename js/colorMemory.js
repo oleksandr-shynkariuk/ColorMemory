@@ -19,8 +19,10 @@ game.secondSelectionRow = -1;
 game.secondSelectionColumn = -1;
 game.firstColor = "";
 game.secondColor = "";
-//TODO: fetch coors
 game.colors = ["#3be6c4", "#e6e03b", "#6f3be6", "#4fe63b", "#e63b3b", "#ff5a00", "#ff00de", "#3b8fe6"];
+
+//TODO: fetch coors using cross-origin resource sharing (CORS) protocol
+game.colorsConfURL = "http://labs.funspot.tv/worktest_color_memory/colours.conf";
 game.colorsNumber = game.colors.length;
 
 game.parentPane = 'body';//parent pane element
@@ -51,7 +53,7 @@ game.board.fillWithColors = function(){
         game.board.grid[i] = new Array();
         for(var j = 0; j < dimension; ++j){
             game.board.grid[i][j] = colors[c];
-            console.log("grid: " + i + " " + j + ": " + game.board.grid[i][j]);
+            //console.log("grid: " + i + " " + j + ": " + game.board.grid[i][j]);
             ++c;
         }
     }
@@ -81,39 +83,77 @@ game.board.updateHighlight = function(prevCellId){
     }
 };
 
+game.searchAvailableRow = function(currentRow, direction){
+    var row;
+    if("down" == direction)
+        row = (1 + currentRow) % (game.board.size);
+    else if("up" == direction){
+        if(currentRow == 0)
+            row = game.board.size - 1;
+        else
+            row = currentRow - 1;
+    }
+    var cellId = "td" + row + game.board.currentColumn;
+    //console.log("cellID:" + cellId);
+    var cell = document.getElementById(cellId);
+    if(cell.classList.contains("face-down")){
+        return row;
+    } else{
+        return this.searchAvailableRow(row, direction);
+    }
+};
+
+game.searchAvailableColumn = function(currentColumn, direction){
+    var col;
+    if(direction == "right")
+        col = (1 + currentColumn) % (game.board.size);
+    else if(direction == "left"){
+        if(currentColumn == 0)
+            col = game.board.size - 1;
+        else
+            col = currentColumn - 1
+    }
+    var cellId = "td" + game.board.currentRow + col;
+    var cell = document.getElementById(cellId);
+    if(cell.classList.contains("face-down")){
+        return col;
+    } else{
+        return this.searchAvailableColumn(col, direction);
+    }
+};
+
 game.moveDown = function(){
     prevCellId = game.board.currentCellId;
-    game.board.currentRow = (1 + game.board.currentRow) % (game.board.size);
+    game.board.currentRow = this.searchAvailableRow(game.board.currentRow, "down");
     game.board.updateHighlight(prevCellId);
-    //TODO: Make highlight moving over already opened cells
-    //TODO: prohibit moving to already opened cards
+    //TODO: Make highlight moving over already opened cards
 };
+
 game.moveUp = function(){
     prevCellId = game.board.currentCellId;
-    if(game.board.currentRow == 0)
-        game.board.currentRow = game.board.size - 1;
-    else
-        --game.board.currentRow;
+    game.board.currentRow = this.searchAvailableRow(game.board.currentRow, "up")
     game.board.updateHighlight(prevCellId);
-
 };
 game.moveLeft = function(){
     prevCellId = game.board.currentCellId;
-    if(game.board.currentColumn == 0)
+    /*if(game.board.currentColumn == 0)
         game.board.currentColumn = game.board.size - 1;
     else
-        --game.board.currentColumn;
+        --game.board.currentColumn;*/
+    game.board.currentColumn = this.searchAvailableColumn(game.board.currentColumn, "left");
     game.board.updateHighlight(prevCellId);
 };
 game.moveRight = function(){
     prevCellId = game.board.currentCellId;
-    game.board.currentColumn = (1 + game.board.currentColumn) % (game.board.size);
+    //game.board.currentColumn = (1 + game.board.currentColumn) % (game.board.size);
+    game.board.currentColumn = this.searchAvailableColumn(game.board.currentColumn, "right");
     game.board.updateHighlight(prevCellId);
 };
 game.openCard = function(){
     var color = game.board.grid[game.board.currentRow][game.board.currentColumn];
     game.board.currentCell = document.getElementById(game.board.currentCellId);
-    if(game.board.currentCell != null && !game.board.busy){
+    var faceDown = game.board.currentCell.classList.contains("face-down")
+    if(game.board.currentCell != null && !game.board.busy && faceDown){
         game.board.currentCell.className = "highlight";//leave highlight and change background color
         game.board.currentCell.bgColor = color;
         if(game.firstColor == ""){//save first color
