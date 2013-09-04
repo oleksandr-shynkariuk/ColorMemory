@@ -25,7 +25,7 @@ game.colors = ["#3be6c4", "#e6e03b", "#6f3be6", "#4fe63b", "#e63b3b", "#ff5a00",
 game.colorsConfURL = "http://labs.funspot.tv/worktest_color_memory/colours.conf";
 game.colorsNumber = game.colors.length;
 
-game.parentPane = 'body';//parent pane element
+game.parentPane = 'grid';//parent pane element
 game.board.size = Math.sqrt(game.colorsNumber * 2);
 game.board.currentCell = {};
 game.board.busy = false;//flag to forbid opening >2 cards
@@ -220,10 +220,12 @@ game.initStartBoard = function(){
 
 game.drawGameBoard = function(){
     this.board.instance = document.createElement('div');
-    $(this.parentPane).append(this.board.instance);
+    var parent = document.getElementById(this.parentPane);
+    parent.appendChild(this.board.instance);
 
     $(this.board.instance).css({
-        'position':'absolute',
+        //'position':'absolute',
+        'position':'inherit',
         'top':this.board.top,
         'left':this.board.left,
         'width':this.board.width,
