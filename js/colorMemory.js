@@ -246,7 +246,23 @@ game.prepareGameBoard = function(){
     this.drawGameBoard();
 };
 
+/**
+ * prefetch colors from link: http://labs.funspot.tv/worktest_color_memory/colours.conf
+ * */
+game.prefetchColors = function(){
+    var link = "http://labs.funspot.tv/worktest_color_memory/colours.conf";
+    var xhr = new XMLHttpRequest();
+    alert("Alive!");
+    xhr.open("get", link, true);
+    xhr.onload = function(){  //instead of onreadystatechange
+
+    };
+    xhr.send(null);
+};
+
+
 game.init = function(){
+    this.prefetchColors()
     this.prepareGameBoard();
     this.initStartBoard();
     $(document).keydown(this.keyPress);
