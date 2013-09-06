@@ -14,6 +14,8 @@ var game = {};//a game instance
 game.board = {};//game board
 
 game.firstSelectionRow = -1;
+game.score = 640;//default for 4x4 board
+game.penalty = 10;
 game.firstSelectionColumn = -1;
 game.secondSelectionRow = -1;
 game.secondSelectionColumn = -1;
@@ -40,6 +42,9 @@ game.board.style = {
 game.board.highlight = {
     'border-color': 'orange'
 };
+$( "#restartButton" ).click(function() {
+    location.reload();
+});
 game.board.grid = new Array();
 game.section = {};
 //fill game grid randomly with given colors
@@ -53,7 +58,6 @@ game.board.fillWithColors = function(){
         game.board.grid[i] = new Array();
         for(var j = 0; j < dimension; ++j){
             game.board.grid[i][j] = colors[c];
-            //console.log("grid: " + i + " " + j + ": " + game.board.grid[i][j]);
             ++c;
         }
     }
@@ -79,7 +83,7 @@ game.board.updateHighlight = function(prevCellId){
     if(prevCell != null){
         $(prevCell).removeClass("highlight");
     } else{
-        alert("Null " + prevCellId);//TODO: remove it!
+        //TODO: handle this case!
     }
 };
 
@@ -126,7 +130,6 @@ game.moveDown = function(){
     prevCellId = game.board.currentCellId;
     game.board.currentRow = this.searchAvailableRow(game.board.currentRow, "down");
     game.board.updateHighlight(prevCellId);
-    //TODO: Make highlight moving over already opened cards
 };
 
 game.moveUp = function(){
@@ -162,14 +165,21 @@ game.openCard = function(){
             game.firstSelectionColumn = game.board.currentColumn;
         } else{
             if(game.firstColor != color){
-                var currentRow = game.board.currentRow;
-                var currentColumn = game.board.currentColumn;
-                game.board.busy = true;
-                setTimeout(function(){
-                    game.board.turnCardFaceDown(game.firstSelectionRow, game.firstSelectionColumn);
-                    game.board.turnCardFaceDown(currentRow, currentColumn);
-                    game.board.busy = false;
-                }, 2000);
+                if(game.score - game.penalty > 0){
+                    game.score = game.score - game.penalty;
+                    $("#points").text(game.score);
+                    var currentRow = game.board.currentRow;
+                    var currentColumn = game.board.currentColumn;
+                    game.board.busy = true;
+                    setTimeout(function(){
+                        game.board.turnCardFaceDown(game.firstSelectionRow, game.firstSelectionColumn);
+                        game.board.turnCardFaceDown(currentRow, currentColumn);
+                        game.board.busy = false;
+                    }, 2000);
+                } else{
+                    game.board.busy = true;
+                    $("#points").text("Game Over!");
+                }
             }
             game.firstColor = "";
         }
@@ -231,6 +241,9 @@ game.drawGameBoard = function(){
         'width':this.board.width,
         'height':this.board.height
     }).css(this.board.style);
+
+    //draw score also
+    $("#points").text(game.score);
 };
 
 game.prepareGameBoard = function(){
@@ -248,25 +261,24 @@ game.prepareGameBoard = function(){
 
 /**
  * prefetch colors from link: http://labs.funspot.tv/worktest_color_memory/colours.conf
+ * TODO: configure server
  * */
 game.prefetchColors = function(){
     var link = "http://labs.funspot.tv/worktest_color_memory/colours.conf";
     var xhr = new XMLHttpRequest();
-    alert("Alive!");
     xhr.open("get", link, true);
-    xhr.onload = function(){  //instead of onreadystatechange
-
+    xhr.onload = function(){
+        //TODO: parse file with colors here
     };
     xhr.send(null);
 };
 
 
 game.init = function(){
-    this.prefetchColors()
+    //this.prefetchColors()
     this.prepareGameBoard();
     this.initStartBoard();
     $(document).keydown(this.keyPress);
-    //TODO more stuff here
 };
 
 function init(){
